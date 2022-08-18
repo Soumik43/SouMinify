@@ -9,8 +9,8 @@ six
 streamlit
 Pillow
 google-cloud-storage
-firebase_admin
 firebase
+firebase_admin
 scipy
 python_jwt
 gcloud

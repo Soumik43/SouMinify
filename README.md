@@ -51,3 +51,9 @@ Start the streamlit server
   streamlit run app.py
 ```
 
+Inorder to change the limit of the upload size in streamlit while image selection, you can change this in the .streamlit/config.toml file.
+
+```bash
+  [server]
+  maxUploadSize = {Your upload limit size}
+```

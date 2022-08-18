@@ -17,13 +17,13 @@ The images that are compressed are stored in cloud, here firebase storage has be
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Soumik43/Image-Jpeg-Compression
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd image-jpeg-compression
 ```
 
 Install requirements text file
@@ -32,17 +32,20 @@ Install requirements text file
   pip install -r requirements.txt
 ```
 
-Create a firebase project and create a **Web app**, download the json file given, name it 
-**serviceAccountKey.json** and paste it in our folder directory.
+Create a new firebase project and create a **Web app**, download the json file given, name it **serviceAccountKey.json** and paste it in your folder directory and use it as given below.
 
 ```bash
   myProject/serviceAccountKey.json
+
+  In place of {credentialsToml} paste 'serviceAccountKey.json' in file app.py
+  cred = credentials.Certificate(credentialsToml) --> cred = credentials.Certificate('serviceAccountKey.json')
+
 ```
 
-Create a storage bucket in your firebase console, and get the link to the
- storage (exclude the gs://) and use in the **app.py** file.
+Create a storage bucket in your firebase console, and get the link to the storage (exclude the gs:// from the link) and use in the **app.py** file.
 
 ```bash
+  Paste your link like given below in file app.py
   initialize_app(cred, {
         'storageBucket': '{Your link to the firebase storage}'
     })

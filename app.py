@@ -1,4 +1,3 @@
-import json
 import streamlit as st
 import os
 import functions
@@ -24,7 +23,7 @@ if not firebase_admin._apps:
     }
     cred = credentials.Certificate(credentialsToml)
     initialize_app(cred, {
-        'storageBucket': str(st.secrets.db_credentials.FIREBASE_STORAGE_LINK),
+        'storageBucket': st.secrets.db_credentials.FIREBASE_STORAGE_LINK,
     })
 
 bucket = storage.bucket()

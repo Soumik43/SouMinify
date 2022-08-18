@@ -1,5 +1,4 @@
 import os
-import sys
 import time
 import huffmanTree.huffmanTree as huffman
 import numpy as np

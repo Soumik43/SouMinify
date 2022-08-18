@@ -16,3 +16,4 @@ python_jwt
 gcloud
 sseclient
 crypto
+pycryptodome

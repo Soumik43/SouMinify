@@ -1,17 +1,30 @@
+import json
 import streamlit as st
 import os
 import functions
 import firebase_admin
-import config
 
 from firebase_admin import storage, initialize_app, credentials
 from model import imageCompression
 from utils import allFormats
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate('serviceAccountKey.json')
+    fbCred = st.secrets.firebase_credentials
+    credentialsToml = {
+        "type": fbCred.type,
+        "project_id": fbCred.project_id,
+        "private_key_id": fbCred.private_key_id,
+        "private_key": fbCred.private_key,
+        "client_email": fbCred.client_email,
+        "client_id": fbCred.client_id,
+        "auth_uri": fbCred.auth_uri,
+        "token_uri": fbCred.token_uri,
+        "auth_provider_x509_cert_url": fbCred.auth_provider_x509_cert_url,
+        "client_x509_cert_url": fbCred.client_x509_cert_url
+    }
+    cred = credentials.Certificate(credentialsToml)
     initialize_app(cred, {
-        'storageBucket': config.FIREBASE_STORAGE_LINK,
+        'storageBucket': str(st.secrets.db_credentials.FIREBASE_STORAGE_LINK),
     })
 
 bucket = storage.bucket()

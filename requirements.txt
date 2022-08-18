@@ -17,3 +17,4 @@ gcloud
 sseclient
 crypto
 pycryptodome
+requests_toolbelt

@@ -175,6 +175,4 @@ def quantize(y, cr, cb):
                       j * windowSize: j * windowSize + windowSize] / QTC
             )
 
-    print(f'Total number of operations: {vbC * hbC + vbY * hbY}')
-
     return yq, crq, cbq, windowSize

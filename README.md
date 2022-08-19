@@ -4,7 +4,7 @@
 Look at the live working website right here - [Image JPEG Compression](https://soumik43-image-jpeg-compression-app-220kaa.streamlitapp.com/) 
 
 
-This is an Image compressor which uses algorithms like **Huffman tree, Quantization, DCT** inorder to compress images.
+This is an Image compressor that uses algorithms like **Huffman tree, Quantization, and DCT** which are also used in Whatsapp image compression, in order to compress images.
 
 
 The images that are compressed are stored in cloud, here firebase storage has been used for the storing the images.

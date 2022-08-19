@@ -73,8 +73,8 @@ def imageCompression(image):
                                 width,
                                 height,
                                 y,
-                                cb,
-                                cr)
+                                cr,
+                                cb)
     )
     with open(f"{fileSuffix}.huff", "wb") as f:
         for data in bytesGenerator:
@@ -90,7 +90,7 @@ def imageCompression(image):
 
     compressedHuffmanPath = f"{fileSuffix}.huff"
 
-    # decode image
+    # Decode image
     bEncImg = ''.join(map(lambda x: '{:08b}'.format(x), enc_img))
     arrImg = huffman.huffmanImageDecoder(bEncImg, dim)
     arrImg = arrImg.astype('uint8')

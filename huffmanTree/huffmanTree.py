@@ -1,5 +1,6 @@
-from collections import deque
 import numpy as np
+
+from collections import deque
 
 
 class PriorityQueue:
@@ -72,20 +73,20 @@ def decodeHuffmanEncoding(huffmanEncoding, encodedData):
     encodedData.append('0')
     encodedData.reverse()
 
-    def _startDecode(root, encodedData):
+    def startDecode(root, encodedData):
         s = encodedData[-1]
         if s == '0' and root.left != None:
             encodedData.pop()
-            return _startDecode(root.left, encodedData)
+            return startDecode(root.left, encodedData)
         elif s == '0' and root.left == None:
             return encodedData, root.data
         elif s == '1' and root.right != None:
             encodedData.pop()
-            return _startDecode(root.right, encodedData)
+            return startDecode(root.right, encodedData)
         elif s == '1' and root.right == None:
             return encodedData, root.data
     while len(encodedData) > 1:
-        encodedData, decoded = _startDecode(root, encodedData)
+        encodedData, decoded = startDecode(root, encodedData)
         decoded_data += decoded
     return decoded_data
 
@@ -121,21 +122,21 @@ def huffmanImageDecoder(encodedValue, nDim=None):
     encodedData = deque(encodedData)
     encodedData.append('0')
 
-    def _startDecode(root: HuffmanTreeCell, encodedData):
+    def startDecode(root: HuffmanTreeCell, encodedData):
         s = encodedData[0]
         if s == '0' and root.left != None:
             encodedData.popleft()
-            return _startDecode(root.left, encodedData)
+            return startDecode(root.left, encodedData)
         elif s == '0' and root.left == None:
             return root.data
         elif s == '1' and root.right != None:
             encodedData.popleft()
-            return _startDecode(root.right, encodedData)
+            return startDecode(root.right, encodedData)
         elif s == '1' and root.right == None:
             return root.data
     try:
         while 1:
-            decoded = _startDecode(root, encodedData)
+            decoded = startDecode(root, encodedData)
             decoded_data.append(decoded)
     except Exception:
         pass
@@ -147,9 +148,9 @@ def huffmanImageDecoder(encodedValue, nDim=None):
     return arrImg
 
 
-def huffman(value_frequency):
+def huffman(valueFrequency):
     queue = PriorityQueue()
-    for data, freq in value_frequency:
+    for data, freq in valueFrequency:
         treeCell = HuffmanTreeCell()
         treeCell.data = data
         treeCell.freq = freq
@@ -179,14 +180,12 @@ def toBytes(data):
         yield bytes([int(data[i:i+8], 2)])
 
 
-def wrapEncodedData(huffmanMap, encodedData, width, height, y, cb, c):
-    encodedData = ''.join(
-        list(encodedData))  # change this later to optimize memory
+def wrapEncodedData(huffmanMap, encodedData, width, height, y, cr, cb):
+    encodedData = ''.join(list(encodedData))
     totalLastBitPad = 8-len(encodedData) % 8
     bTotalLastBitPad = '{0:08b}'.format(totalLastBitPad)
     width = '{0:032b}'.format(width)
     height = '{0:032b}'.format(height)
-    # need to save 1 byte so byteLength=0 means that there is 1 byte
     totalMapData = '{0:08b}'.format(len(huffmanMap)-1)
     header = bTotalLastBitPad + width + height + totalMapData
     mapData = ''

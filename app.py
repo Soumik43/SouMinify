@@ -8,22 +8,26 @@ from model import imageCompression
 from utils import allFormats
 
 if not firebase_admin._apps:
-    fbCred = st.secrets.firebase_credentials
-    credentialsToml = {
-        "type": fbCred.type,
-        "project_id": fbCred.project_id,
-        "private_key_id": fbCred.private_key_id,
-        "private_key": fbCred.private_key,
-        "client_email": fbCred.client_email,
-        "client_id": fbCred.client_id,
-        "auth_uri": fbCred.auth_uri,
-        "token_uri": fbCred.token_uri,
-        "auth_provider_x509_cert_url": fbCred.auth_provider_x509_cert_url,
-        "client_x509_cert_url": fbCred.client_x509_cert_url
-    }
+    if st.secrets.has_key("firebase_credentials"):
+        fbCred = st.secrets.firebase_credentials
+        credentialsToml = {
+            "type": fbCred.type,
+            "project_id": fbCred.project_id,
+            "private_key_id": fbCred.private_key_id,
+            "private_key": fbCred.private_key,
+            "client_email": fbCred.client_email,
+            "client_id": fbCred.client_id,
+            "auth_uri": fbCred.auth_uri,
+            "token_uri": fbCred.token_uri,
+            "auth_provider_x509_cert_url": fbCred.auth_provider_x509_cert_url,
+            "client_x509_cert_url": fbCred.client_x509_cert_url
+        }
+    else:
+        # Inorder to support running locally
+        credentialsToml = "serviceAccountKey.json"
     cred = credentials.Certificate(credentialsToml)
     initialize_app(cred, {
-        'storageBucket': st.secrets.db_credentials.FIREBASE_STORAGE_LINK,
+        "storageBucket": st.secrets.db_credentials.FIREBASE_STORAGE_LINK,
     })
 
 bucket = storage.bucket()

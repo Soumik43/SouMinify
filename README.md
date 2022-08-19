@@ -32,13 +32,10 @@ Install requirements text file
   pip install -r requirements.txt
 ```
 
-Create a new firebase project and create a **Web app**, download the json file given, name it **serviceAccountKey.json** and paste it in your folder directory and use it as given below.
+Create a new firebase project and create a **Web app**, download the json file given, name it **serviceAccountKey.json** and paste it in your folder directory.
 
 ```bash
   myProject/serviceAccountKey.json
-
-  In place of {credentialsToml} paste 'serviceAccountKey.json' in file app.py
-  cred = credentials.Certificate(credentialsToml) --> cred = credentials.Certificate('serviceAccountKey.json')
 
 ```
 

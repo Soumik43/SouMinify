@@ -35,7 +35,7 @@ Install requirements text file
 Create a new firebase project and create a **Web app**, download the json file given, name it **serviceAccountKey.json** and paste it in your folder directory.
 
 ```bash
-  myProject/serviceAccountKey.json
+  image-jpeg-compression/serviceAccountKey.json
 
 ```
 

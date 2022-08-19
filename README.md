@@ -43,6 +43,7 @@ Create a storage bucket in your firebase console, and get the link to the storag
 
 ```bash
   Paste your link like given below in file app.py
+  
   initialize_app(cred, {
         'storageBucket': '{Your link to the firebase storage}'
     })

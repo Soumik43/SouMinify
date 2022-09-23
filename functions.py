@@ -90,7 +90,7 @@ def zigzag(array: np.ndarray) -> np.ndarray:
                 v = v - 1
                 h = h + 1
                 i = i + 1
-        else:  # going down
+        else: 
             if (v == vMax - 1) and (h <= hMax - 1):
                 output[i] = array[v, h]
                 h = h + 1
@@ -112,3 +112,7 @@ def zigzag(array: np.ndarray) -> np.ndarray:
             break
 
     return output
+
+
+def getHuffmanCode(huff):
+    [print(f"{key_value[0]}\t{key_value[1]}") for key_value in huff]

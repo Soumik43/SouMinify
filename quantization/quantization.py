@@ -96,7 +96,6 @@ def performDct(y, cr, cb, yWidth, yLength, cWidth, cLength, windowSize):
                 norm='ortho'
             )
 
-    # either crq or cbq can be used to compute the number of blocks
     for i in range(vbC):
         for j in range(hbC):
             crDct[i * windowSize: i * windowSize + windowSize, j * windowSize: j * windowSize + windowSize] = dct(

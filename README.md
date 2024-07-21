@@ -1,5 +1,5 @@
 
-# SouMinify - Image compression
+# SouMinify - Image compression algorithm
 
 Look at the live working website right here - [SouMinify - Image Compression](https://soumik43-image-jpeg-compression-app-220kaa.streamlitapp.com/) 
 
